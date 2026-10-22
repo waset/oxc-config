@@ -1,0 +1,16 @@
+$accent: #2563eb;
+$spacing: 12px;
+
+.toolbar {
+  display: flex;
+  gap: $spacing;
+
+  button {
+    padding: 8px 16px;
+    color: $accent;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

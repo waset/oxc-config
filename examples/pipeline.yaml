@@ -1,0 +1,10 @@
+name: 团队检查
+enabled: true
+steps:
+  - name: 校验代码
+    command: pnpm lint
+  - name: 检查格式
+    command: pnpm format:check
+labels:
+  - Vue
+  - TypeScript

@@ -7,6 +7,9 @@ on:
 permissions:
   contents: read
 
+env:
+  SKIP_INSTALL_SIMPLE_GIT_HOOKS: '1'
+
 jobs:
   check:
     runs-on: ${{ matrix.os }}
@@ -17,6 +20,8 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v7
         with:
           node-version: 24
@@ -27,6 +32,6 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm format:check
+      - run: pnpm exec lint-staged --diff=HEAD^..HEAD --fail-on-changes
       - run: pnpm pack --out "${{ runner.temp }}/oxc-config.tgz"
       - run: pnpm smoke "${{ runner.temp }}/oxc-config.tgz"
-      - run: pnpm smoke:hooks

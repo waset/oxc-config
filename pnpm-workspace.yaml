@@ -1,0 +1,3 @@
+# 由根项目 prepare 初始化钩子，避免依赖 postinstall 重复执行。
+allowBuilds:
+  simple-git-hooks: false
