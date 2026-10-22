@@ -1,0 +1,9 @@
+{
+  "name": "团队工具箱",
+  "enabled": true,
+  "tasks": ["校验代码", "统一格式"],
+  "owner": {
+    "name": "维护者",
+    "notifications": false
+  }
+}

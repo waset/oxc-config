@@ -1,0 +1,8 @@
+{
+  // JSONC 可以保留说明性注释。
+  "editor": {
+    "formatOnSave": true,
+    "tabSize": 2,
+  },
+  "languages": ["JavaScript", "TypeScript", "Vue"],
+}

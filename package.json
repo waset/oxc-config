@@ -45,12 +45,16 @@
   },
   "scripts": {
     "lint": "oxlint -c oxlint.config.mjs .",
+    "lint:fix": "oxlint -c oxlint.config.mjs --fix .",
+    "format": "oxfmt -c oxfmt.config.mjs .",
     "format:check": "oxfmt -c oxfmt.config.mjs --check .",
     "smoke": "node scripts/check.mjs"
   },
   "devDependencies": {
+    "lint-staged": "16.4.0",
     "oxfmt": "0.74.0",
-    "oxlint": "1.89.0"
+    "oxlint": "1.89.0",
+    "simple-git-hooks": "2.14.0"
   },
   "peerDependencies": {
     "oxfmt": "~0.74.0",
@@ -63,6 +67,21 @@
     "oxlint": {
       "optional": true
     }
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "pre-push": "pnpm lint && pnpm format:check",
+    "preserveUnused": true
+  },
+  "lint-staged": {
+    "*.{js,cjs,mjs,ts,cts,mts,tsx,jsx,vue}": [
+      "oxlint -c oxlint.config.mjs --fix --no-error-on-unmatched-pattern",
+      "oxfmt -c oxfmt.config.mjs --no-error-on-unmatched-pattern",
+      "oxlint -c oxlint.config.mjs -f stylish --no-error-on-unmatched-pattern"
+    ],
+    "*.{json,jsonc,yaml,yml,md,html,css,scss,less}": [
+      "oxfmt -c oxfmt.config.mjs --no-error-on-unmatched-pattern"
+    ]
   },
   "engines": {
     "node": "^22.18.0 || >=24.0.0"

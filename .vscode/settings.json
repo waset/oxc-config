@@ -1,0 +1,14 @@
+{
+  "oxc.enable": true,
+  "oxc.requireConfig": false,
+  "oxc.lint.run": "onType",
+  "oxc.configPath": "./oxlint.config.mjs",
+  "oxc.fmt.configPath": "./oxfmt.config.mjs",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.renderValidationDecorations": "on",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "explicit"
+  }
+}

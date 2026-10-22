@@ -1,0 +1,8 @@
+# 使用 simple-git-hooks 自带的安装机制，不让配置包的 Git 消费者执行 prepare。
+allowBuilds:
+  simple-git-hooks: true
+
+# 钩子写入 .git，不能复用其他克隆目录的安装结果。
+sideEffectsCache:
+  exclude:
+    - simple-git-hooks
