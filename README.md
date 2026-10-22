@@ -4,13 +4,13 @@
 
 ## 安装与接入
 
-目前可以通过 GitHub 源安装：
+通过 npm 安装：
 
 ```sh
-pnpm add -D @waset/oxc-config@github:waset/oxc-config#b949894881138dd19063654fc3a5b552d9dd63d9 oxlint@1.89.0 oxfmt@0.74.0
+pnpm add -D @waset/oxc-config@0.1.0 oxlint@1.89.0 oxfmt@0.74.0
 ```
 
-安装示例固定到已验证的 [提交 b949894](https://github.com/waset/oxc-config/commit/b949894881138dd19063654fc3a5b552d9dd63d9)。升级时替换为团队验证后的提交 SHA。只使用其中一个工具时，只需安装相应的 Oxlint 或 Oxfmt。
+安装示例固定配置包版本，升级时更新版本并同步锁文件。只使用其中一个工具时，只需安装相应的 Oxlint 或 Oxfmt。
 
 | 入口                           | 内容                                    |
 | ------------------------------ | --------------------------------------- |
@@ -108,18 +108,18 @@ pnpm install
 
 安装 VS Code 推荐的 [Oxc 扩展](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode)，打开仓库后即可使用已提交的工作区设置：输入时校验、保存时修复与格式化。
 
-| 示例                                      | 展示内容                                   |
-| ----------------------------------------- | ------------------------------------------ |
-| [lint.js](examples/lint.js)               | 函数、数组，以及可取消注释的错误与警告     |
-| [types.ts](examples/types.ts)             | interface、可选属性、类型注解              |
-| [component.vue](examples/component.vue)   | script setup、可选 props、事件、模板和样式 |
-| [data.json](examples/data.json)           | JSON 对象与数组                            |
-| [settings.jsonc](examples/settings.jsonc) | 带注释和尾逗号的配置                       |
-| [pipeline.yaml](examples/pipeline.yaml)   | YAML 映射和任务列表                        |
-| [page.html](examples/page.html)           | HTML 元素与属性                            |
-| [styles.css](examples/styles.css)         | CSS 规则和声明                             |
-| [theme.scss](examples/theme.scss)         | SCSS 变量与嵌套                            |
-| [guide.md](examples/guide.md)             | Markdown 标题、表格、列表和代码块          |
+| 示例                                                                                    | 展示内容                                   |
+| --------------------------------------------------------------------------------------- | ------------------------------------------ |
+| [lint.js](https://github.com/waset/oxc-config/blob/main/examples/lint.js)               | 函数、数组，以及可取消注释的错误与警告     |
+| [types.ts](https://github.com/waset/oxc-config/blob/main/examples/types.ts)             | interface、可选属性、类型注解              |
+| [component.vue](https://github.com/waset/oxc-config/blob/main/examples/component.vue)   | script setup、可选 props、事件、模板和样式 |
+| [data.json](https://github.com/waset/oxc-config/blob/main/examples/data.json)           | JSON 对象与数组                            |
+| [settings.jsonc](https://github.com/waset/oxc-config/blob/main/examples/settings.jsonc) | 带注释和尾逗号的配置                       |
+| [pipeline.yaml](https://github.com/waset/oxc-config/blob/main/examples/pipeline.yaml)   | YAML 映射和任务列表                        |
+| [page.html](https://github.com/waset/oxc-config/blob/main/examples/page.html)           | HTML 元素与属性                            |
+| [styles.css](https://github.com/waset/oxc-config/blob/main/examples/styles.css)         | CSS 规则和声明                             |
+| [theme.scss](https://github.com/waset/oxc-config/blob/main/examples/theme.scss)         | SCSS 变量与嵌套                            |
+| [guide.md](https://github.com/waset/oxc-config/blob/main/examples/guide.md)             | Markdown 标题、表格、列表和代码块          |
 
 实际示例全部保持检查通过。可以进行以下体验，结束后恢复注释：
 
