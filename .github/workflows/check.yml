@@ -29,3 +29,4 @@ jobs:
       - run: pnpm format:check
       - run: pnpm pack --out "${{ runner.temp }}/oxc-config.tgz"
       - run: pnpm smoke "${{ runner.temp }}/oxc-config.tgz"
+      - run: pnpm smoke:hooks

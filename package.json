@@ -45,8 +45,13 @@
   },
   "scripts": {
     "lint": "oxlint -c oxlint.config.mjs .",
+    "lint:fix": "oxlint -c oxlint.config.mjs --fix .",
+    "format": "oxfmt -c oxfmt.config.mjs .",
     "format:check": "oxfmt -c oxfmt.config.mjs --check .",
-    "smoke": "node scripts/check.mjs"
+    "smoke": "node scripts/check.mjs",
+    "pnpm:devPreinstall": "node scripts/install-hooks.mjs",
+    "hooks:install": "node scripts/install-hooks.mjs",
+    "smoke:hooks": "node scripts/check-hooks.mjs"
   },
   "devDependencies": {
     "oxfmt": "0.74.0",
