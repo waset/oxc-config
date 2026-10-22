@@ -1,5 +1,5 @@
 import { execFileSync, spawnSync } from 'node:child_process'
-import { chmodSync, lstatSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from 'node:fs'
+import { chmodSync, lstatSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -9,14 +9,13 @@ const marker = '# @waset/oxc-config managed pre-commit hook'
 function install() {
   if (process.env.CI) return
 
-  const repository = spawnSync('git', ['rev-parse', '--show-toplevel'], {
+  const repository = spawnSync('git', ['rev-parse', '--show-prefix'], {
     cwd: packageRoot,
     encoding: 'utf8',
     windowsHide: true,
   })
-  if (repository.status !== 0) return
-  // 仅安装当前仓库的开发钩子，不影响把配置包作为依赖安装的项目。
-  if (realpathSync(repository.stdout.trim()) !== realpathSync(packageRoot)) return
+  // 由 Git 判断包是否位于仓库根，避免 Windows 长短路径差异并跳过依赖安装。
+  if (repository.status !== 0 || repository.stdout.trim() !== '') return
 
   const customPath = spawnSync('git', ['config', '--get', 'core.hooksPath'], {
     cwd: packageRoot,
