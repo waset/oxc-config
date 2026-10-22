@@ -1,6 +1,15 @@
 import assert from 'node:assert/strict'
 import { execFileSync, spawnSync } from 'node:child_process'
-import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
+import {
+  copyFileSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  readdirSync,
+  renameSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs'
 import { createRequire } from 'node:module'
 import { tmpdir } from 'node:os'
 import { dirname, extname, join, resolve } from 'node:path'
@@ -60,8 +69,14 @@ try {
 
   const consumer = join(temporaryRoot, '消费 项目 中文')
   const installedPackage = join(consumer, 'node_modules', '@waset', 'oxc-config')
-  mkdirSync(installedPackage, { recursive: true })
-  execFileSync('tar', ['-xzf', archive, '-C', installedPackage, '--strip-components=1'])
+  const unpacked = join(temporaryRoot, 'unpacked')
+  mkdirSync(unpacked)
+  // 避免 Windows tar 的参数编码限制，中文消费路径由 Node 创建和移动。
+  copyFileSync(archive, join(unpacked, 'archive.tgz'))
+  execFileSync('tar', ['-xzf', 'archive.tgz', '--strip-components=1'], { cwd: unpacked })
+  rmSync(join(unpacked, 'archive.tgz'))
+  mkdirSync(dirname(installedPackage), { recursive: true })
+  renameSync(unpacked, installedPackage)
   writeFixture(consumer, 'package.json', '{"private":true,"type":"module"}\n')
   const manifest = JSON.parse(readFileSync(join(installedPackage, 'package.json'), 'utf8'))
   assert.equal(manifest.name, '@waset/oxc-config')
