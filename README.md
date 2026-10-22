@@ -88,7 +88,7 @@ cd oxc-config
 pnpm install
 ```
 
-`prepare` 会调用 simple-git-hooks 自动初始化本仓库 hooks。安装完成后：
+本仓库通过 `pnpm-workspace.yaml` 允许 [simple-git-hooks 自带的安装脚本](https://github.com/toplenboren/simple-git-hooks#common-issues)，并将它排除出构建结果缓存，确保每个新克隆的仓库在安装依赖时自动初始化 hooks。配置包本身没有安装或构建脚本，其他项目引用配置时无需额外授权构建。安装完成后：
 
 - `git commit` 自动运行 lint-staged：对暂存的脚本和 Vue 文件依次尝试 Oxlint 修复、Oxfmt 格式化和 Oxlint 复检；其他匹配的文件进行格式化。修复后的内容会进入暂存区。
 - `git push` 自动执行全仓 `pnpm lint` 与 `pnpm format:check`。无法自动修复的错误或仍未统一的格式会阻止相应操作。

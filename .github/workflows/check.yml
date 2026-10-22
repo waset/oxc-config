@@ -7,9 +7,6 @@ on:
 permissions:
   contents: read
 
-env:
-  SKIP_INSTALL_SIMPLE_GIT_HOOKS: '1'
-
 jobs:
   check:
     runs-on: ${{ matrix.os }}
@@ -30,8 +27,10 @@ jobs:
           version: 12.14.0
           run_install: false
       - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
-      - run: pnpm format:check
+      - name: Check installed pre-commit hook
+        run: git hook run pre-commit
+      - name: Check installed pre-push hook
+        run: git hook run pre-push
       - run: pnpm exec lint-staged --diff=HEAD^..HEAD --fail-on-changes
       - run: pnpm pack --out "${{ runner.temp }}/oxc-config.tgz"
       - run: pnpm smoke "${{ runner.temp }}/oxc-config.tgz"

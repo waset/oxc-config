@@ -48,8 +48,7 @@
     "lint:fix": "oxlint -c oxlint.config.mjs --fix .",
     "format": "oxfmt -c oxfmt.config.mjs .",
     "format:check": "oxfmt -c oxfmt.config.mjs --check .",
-    "smoke": "node scripts/check.mjs",
-    "prepare": "simple-git-hooks"
+    "smoke": "node scripts/check.mjs"
   },
   "devDependencies": {
     "lint-staged": "16.4.0",
