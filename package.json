@@ -52,12 +52,12 @@
   },
   "devDependencies": {
     "lint-staged": "16.4.0",
-    "oxfmt": "0.74.0",
+    "oxfmt": "0.75.0",
     "oxlint": "1.89.0",
     "simple-git-hooks": "2.14.0"
   },
   "peerDependencies": {
-    "oxfmt": "~0.74.0",
+    "oxfmt": "~0.74.0 || ~0.75.0",
     "oxlint": "^1.89.0"
   },
   "peerDependenciesMeta": {
