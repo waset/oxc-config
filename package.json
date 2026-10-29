@@ -51,7 +51,7 @@
     "smoke": "node scripts/check.mjs"
   },
   "devDependencies": {
-    "lint-staged": "16.4.0",
+    "lint-staged": "17.6.0",
     "oxfmt": "0.74.0",
     "oxlint": "1.89.0",
     "simple-git-hooks": "2.14.0"
