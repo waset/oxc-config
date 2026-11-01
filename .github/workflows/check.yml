@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 2
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 26
       - uses: pnpm/action-setup@v6
         with:
           version: 12.14.0
